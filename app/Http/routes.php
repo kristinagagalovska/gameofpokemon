@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/edit/{id}', 'UController@edit')->name('user.edit');
 Route::post('/edit/{id}', 'UController@update')->name('user.edit');
+
+Route::get('/show', 'PokemonController@show')->name('pokemon.show');
