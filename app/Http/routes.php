@@ -26,3 +26,6 @@ Route::get('pokemon/show', 'PokemonController@show')->name('pokemon.show');
 
 Route::get('pokemon/add', 'PokemonController@create')->name('pokemon.add');
 Route::post('pokemon/add', 'PokemonController@store')->name('pokemon.add');
+
+Route::get('pokemon/edit/{id}', 'PokemonController@edit')->name('pokemon.edit');
+Route::post('pokemon/edit/{id}', 'PokemonController@update')->name('pokemon.edit');

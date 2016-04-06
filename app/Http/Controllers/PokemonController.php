@@ -34,4 +34,23 @@ class PokemonController extends Controller
         return redirect()->route('pokemon.show');
     }
 
+    public function edit($id)
+    {
+        $pokemon = Pokemon::find($id);
+
+        return view('pokemon.edit')->with('pokemon', $pokemon);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->name=$request->get('name');
+        $pokemon->image=$request->get('image');
+        $pokemon->strength=$request->get('strength');
+
+        $pokemon->save();
+
+        return redirect()->route('pokemon.show');
+    }
+
 }
