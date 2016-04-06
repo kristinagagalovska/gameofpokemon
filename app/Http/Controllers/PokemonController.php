@@ -53,4 +53,12 @@ class PokemonController extends Controller
         return redirect()->route('pokemon.show');
     }
 
+    public function delete(Request $request, $id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->delete();
+
+        return redirect()->route('pokemon.show');
+    }
+
 }
