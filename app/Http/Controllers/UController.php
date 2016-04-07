@@ -60,7 +60,7 @@
 
      public function mypo($id)
      {
-         $pokemons = Pokemon::all()->where('user_id', $id);
+         $pokemons = Pokemon::all()->where('user_id', '$id');
 
          return view('user.mypokemons')->with('pokemons', $pokemons);
      }
@@ -77,13 +77,10 @@
 
      public function myStrength(Request $request, $id)
      {
-         $sum=0;
-         $pokemons = Pokemon::all()->where('user_id', $id);
+         $strength = Pokemon::all()
+             ->where('user_id', $id)
+             ->sum('strength');
 
-         foreach($pokemons as $pokemon){
-             $sum=$pokemon->strength++;
-         }
-
-         return view('user.strength')->with('sum', $sum);
+         return view('user.strength')->with('sum', $strength);
      }
  }
