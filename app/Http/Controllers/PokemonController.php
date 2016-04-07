@@ -27,9 +27,9 @@ class PokemonController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'image' => 'required|integer|between:1,100'
+           'strength' => 'required|integer|between:1,100'
         ]);
-        
+
         $car = new Pokemon();
         $car->name = $request->get('name');
         $car->image = $request->get('image');
