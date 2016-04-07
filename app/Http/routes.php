@@ -20,7 +20,7 @@ Route::auth();
 Route::get('user/edit/{id}', 'UController@edit')->name('user.edit');
 Route::post('user/edit/{id}', 'UController@update')->name('user.edit');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->middleware('auth');
 
 // select pokemon
 Route::get('user/pokemon/{id}', 'UController@select')->name('user.pokemon');
@@ -35,29 +35,31 @@ Route::get('user/mydelete/{id}', 'UController@abandon')->name('user.mydelete');
 // sum of the strengths
 Route::get('user/strength/{id}', 'UController@myStrength')->name('user.strength');
 
+
 // show all pokemon
-Route::get('pokemon/show', 'PokemonController@show')->name('pokemon.show');
+Route::get('pokemon/show', 'PokemonController@show')->name('pokemon.show')->middleware('isAdmin');
 
 // add pokemon
-Route::get('pokemon/add', 'PokemonController@create')->name('pokemon.add');
-Route::post('pokemon/add', 'PokemonController@store')->name('pokemon.add');
+Route::get('pokemon/add', 'PokemonController@create')->name('pokemon.add')->middleware('isAdmin');
+Route::post('pokemon/add', 'PokemonController@store')->name('pokemon.add')->middleware('isAdmin');
 
 // edit pokemon
-Route::get('pokemon/edit/{id}', 'PokemonController@edit')->name('pokemon.edit');
-Route::post('pokemon/edit/{id}', 'PokemonController@update')->name('pokemon.edit');
+Route::get('pokemon/edit/{id}', 'PokemonController@edit')->name('pokemon.edit')->middleware('isAdmin');;
+Route::post('pokemon/edit/{id}', 'PokemonController@update')->name('pokemon.edit')->middleware('isAdmin');;
 
 // delete pokemon
-Route::get('pokemon/delete/{id}', 'PokemonController@delete')->name('pokemon.delete');
+Route::get('pokemon/delete/{id}', 'PokemonController@delete')->name('pokemon.delete')->middleware('isAdmin');;
 
 // admin view all user
-Route::get('admin/view', 'AdminController@view')->name('admin.view');
+Route::get('admin/view', 'AdminController@view')->name('admin.view')->middleware('isAdmin');
 
 // admin mark user
-Route::get('admin/mark/{id}', 'AdminController@mark')->name('admin.mark');
-Route::post('admin/mark/{id}', 'AdminController@save')->name('admin.mark');
+Route::get('admin/mark/{id}', 'AdminController@mark')->name('admin.mark')->middleware('isAdmin');
+Route::post('admin/mark/{id}', 'AdminController@save')->name('admin.mark')->middleware('isAdmin');
 
 // admin delete user
-Route::get('admin/destroy/{id}', 'AdminController@destroy')->name('admin.destroy');
+Route::get('admin/destroy/{id}', 'AdminController@destroy')->name('admin.destroy')->middleware('isAdmin');
 
 //admin panel
-Route::get('admin/index', 'AdminController@index')->name('admin.index');
+Route::get('admin/index', 'AdminController@index')->name('admin.index')->middleware('isAdmin');
+
