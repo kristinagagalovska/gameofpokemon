@@ -8,6 +8,11 @@ use App\Http\Requests;
 
 class AdminController extends Controller
 {
+    public function index()
+    {
+        return view('admin.index');
+    }
+
     public function view()
     {
         $users = User::all()->where('admin', 0);

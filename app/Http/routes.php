@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -60,3 +59,5 @@ Route::post('admin/mark/{id}', 'AdminController@save')->name('admin.mark');
 // admin delete user
 Route::get('admin/destroy/{id}', 'AdminController@destroy')->name('admin.destroy');
 
+//admin panel
+Route::get('admin/index', 'AdminController@index')->name('admin.index');
