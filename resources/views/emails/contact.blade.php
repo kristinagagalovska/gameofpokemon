@@ -1,11 +1,1 @@
-<p>
-    Name: {{ $user->name }}
-</p>
-
-<p>
-    {{ $user->email }}
-</p>
-
-<p>
-    {{ $message }}
-</p>
+Hey {{$name}}, Welcome to our website.

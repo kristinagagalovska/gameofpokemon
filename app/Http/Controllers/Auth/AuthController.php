@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Mail;
 
 class AuthController extends Controller
 {
@@ -65,7 +66,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+         $user = User::create([
             'name' => $data['name'],
             'fullname' => $data['fullname'],
             'bday' => $data['bday'],
@@ -74,22 +75,20 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-    }
 
+        Mail::send('emails.contact',
+            $data,
+            function ($message) use ($data) {
+                $message->from('laravelp0@gmail.com');
+                $message->subject('Welcome!');
+                $message->to($data['mail'], $data['name']);
+            });
+
+        return $user;
+    }
     protected function edit($id)
     {
         $users = User::find($id);
         return view('user.edit')->with('users', $users);
-    }
-
-    public function sendEmailReminder(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-
-        Mail::send('emails.contact', ['user' => $user], function ($m) use ($user) {
-            $m->from('laravelp0@gmail.com');
-
-            $m->to($user->email, $user->name)->subject('Feedback');
-        });
     }
 }

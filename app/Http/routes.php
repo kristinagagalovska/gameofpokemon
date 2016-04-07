@@ -63,3 +63,5 @@ Route::get('admin/destroy/{id}', 'AdminController@destroy')->name('admin.destroy
 //admin panel
 Route::get('admin/index', 'AdminController@index')->name('admin.index')->middleware('isAdmin');
 
+
+
