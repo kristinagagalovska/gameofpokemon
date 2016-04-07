@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Pokemon;
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Validation\Validator;
 
 
 class PokemonController extends Controller
@@ -24,6 +26,10 @@ class PokemonController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+           'image' => 'required|integer|between:1,100'
+        ]);
+        
         $car = new Pokemon();
         $car->name = $request->get('name');
         $car->image = $request->get('image');
