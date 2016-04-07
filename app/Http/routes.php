@@ -29,6 +29,8 @@ Route::get('user/mypokemons/{id}', 'UController@mypo')->name('user.mypokemons');
 
 Route::get('user/mydelete/{id}', 'UController@abandon')->name('user.mydelete');
 
+Route::get('user/strength/{id}', 'UController@myStrength')->name('user.strength');
+
 Route::get('pokemon/show', 'PokemonController@show')->name('pokemon.show');
 
 Route::get('pokemon/add', 'PokemonController@create')->name('pokemon.add');

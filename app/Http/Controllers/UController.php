@@ -66,7 +66,7 @@
          return view('user.mypokemons')->with('pokemons', $pokemons);
      }
 
-     public function abandon($id)
+     public function abandon(Request $request, $id)
      {
          $pokemon = Pokemon::find($id);
          $pokemon->user_id = null;
@@ -74,5 +74,11 @@
          $pokemon->save();
 
          return redirect('/home');
+     }
+
+     public function myStrength(Request $request, $id)
+     {
+         $pokemons = Pokemon::all()->where('user_id', $id);
+         var_dump($pokemons);
      }
  }
