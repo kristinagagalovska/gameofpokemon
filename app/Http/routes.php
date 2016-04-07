@@ -19,8 +19,11 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/edit/{id}', 'UController@edit')->name('user.edit');
-Route::post('/edit/{id}', 'UController@update')->name('user.edit');
+Route::get('user/pokemon/{id}', 'UController@select')->name('user.pokemon');
+Route::post('user/pokemon/{id}', 'UController@save')->name('user.pokemon');
+
+Route::get('user/edit/{id}', 'UController@edit')->name('user.edit');
+Route::post('user/edit/{id}', 'UController@update')->name('user.edit');
 
 Route::get('pokemon/show', 'PokemonController@show')->name('pokemon.show');
 

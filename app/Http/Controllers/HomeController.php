@@ -23,9 +23,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $pokemons = Pokemon::all()->where('user_id', null);
-        return view('home')->with('pokemons', $pokemons);
+        return view('home');
     }
 }
