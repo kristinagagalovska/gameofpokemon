@@ -32,5 +32,13 @@ class AdminController extends Controller
         return redirect('admin/view');
     }
 
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return request('admin/view');
+    }
+
 
 }

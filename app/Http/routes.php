@@ -53,7 +53,10 @@ Route::get('pokemon/delete/{id}', 'PokemonController@delete')->name('pokemon.del
 // admin view all user
 Route::get('admin/view', 'AdminController@view')->name('admin.view');
 
-// admin mark
+// admin mark user
 Route::get('admin/mark/{id}', 'AdminController@mark')->name('admin.mark');
 Route::post('admin/mark/{id}', 'AdminController@save')->name('admin.mark');
+
+// admin delete user
+Route::get('admin/destroy/{id}', 'AdminController@destroy')->name('admin.destroy');
 
