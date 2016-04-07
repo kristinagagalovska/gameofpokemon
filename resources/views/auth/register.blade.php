@@ -67,6 +67,8 @@
                             </div>
                         </div>
 
+                        <input type="hidden" value="0" name="admin">
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
