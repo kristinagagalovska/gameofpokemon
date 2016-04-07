@@ -68,7 +68,7 @@
 
      public function abandon(Request $request, $id)
      {
-         $pokemon = Pokemon::find($id);
+         $pokemon = Pokemon::all()->where('id', $id);
          $pokemon->user_id = null;
 
          $pokemon->save();
@@ -78,7 +78,13 @@
 
      public function myStrength(Request $request, $id)
      {
+         $sum=0;
          $pokemons = Pokemon::all()->where('user_id', $id);
-         var_dump($pokemons);
+
+         foreach($pokemons as $pokemon){
+             $sum=$pokemon->strength++;
+         }
+
+         return view('user.strength')->with('sum', $sum);
      }
  }

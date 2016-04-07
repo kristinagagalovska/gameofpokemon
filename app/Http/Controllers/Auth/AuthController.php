@@ -74,4 +74,10 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    protected function edit($id)
+    {
+        $users = User::find($id);
+        return view('user.edit')->with('users', $users);
+    }
 }
