@@ -49,3 +49,11 @@ Route::post('pokemon/edit/{id}', 'PokemonController@update')->name('pokemon.edit
 
 // delete pokemon
 Route::get('pokemon/delete/{id}', 'PokemonController@delete')->name('pokemon.delete');
+
+// admin view all user
+Route::get('admin/view', 'AdminController@view')->name('admin.view');
+
+// admin mark
+Route::get('admin/mark/{id}', 'AdminController@mark')->name('admin.mark');
+Route::post('admin/mark/{id}', 'AdminController@save')->name('admin.mark');
+
