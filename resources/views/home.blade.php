@@ -15,9 +15,11 @@
                     <a href="{{route('user.edit', Auth::user()->id)}}">Edit Profile</a>
                 </div>
                 <div class="panel-body">
+                    <a href="{{route('user.mypokemons', Auth::user()->id)}}">My Pokemon</a>
+                </div>
+                <div class="panel-body">
                     <a href="{{route('user.pokemon', Auth::user()->id)}}">Select Pokemon</a>
                 </div>
-
             </div>
             <div class="panel-body">
         </div>

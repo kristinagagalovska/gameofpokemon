@@ -1,5 +1,5 @@
 <p>Select pokemon:</p>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post">
     <select name="select">
         <option selected disabled name>Select</option>
         @foreach($pokemons as $pokemon)

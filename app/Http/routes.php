@@ -17,13 +17,17 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::get('user/edit/{id}', 'UController@edit')->name('user.edit');
+Route::post('user/edit/{id}', 'UController@update')->name('user.edit');
+
 Route::get('/home', 'HomeController@index');
 
 Route::get('user/pokemon/{id}', 'UController@select')->name('user.pokemon');
 Route::post('user/pokemon/{id}', 'UController@save')->name('user.pokemon');
 
-Route::get('user/edit/{id}', 'UController@edit')->name('user.edit');
-Route::post('user/edit/{id}', 'UController@update')->name('user.edit');
+Route::get('user/mypokemons/{id}', 'UController@mypo')->name('user.mypokemons');
+
+Route::get('user/mydelete/{id}', 'UController@abandon')->name('user.mydelete');
 
 Route::get('pokemon/show', 'PokemonController@show')->name('pokemon.show');
 

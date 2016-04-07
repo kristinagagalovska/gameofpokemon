@@ -8,13 +8,13 @@
 
  class UController extends Controller
  {
-     protected function edit($id)
+     public function edit($id)
      {
          $users = User::find($id);
          return view('user.edit')->with('users', $users);
      }
 
-     protected function update(Request $reguest, $id)
+     public function update(Request $reguest, $id)
      {
          $user = User::find($id);
          $user->name = $reguest->get('name');
@@ -28,7 +28,7 @@
          return redirect('/home');
      }
 
-     protected function select($id)
+     public function select($id)
      {
          $mypokemons = Pokemon::all()->where('user_id', $id);
          $brojac=0;
@@ -47,11 +47,30 @@
          }
      }
 
-     protected function save(Request $request, $id)
+     public function save(Request $request, $id)
      {
          $pid = $request->get('select');
+
          $pokemon = Pokemon::find($pid);
          $pokemon->user_id = $id;
+
+         $pokemon->save();
+
+         return redirect('/home');
+     }
+
+     public function mypo($id)
+     {
+         $pokemons = Pokemon::all()->where('user_id', $id);
+
+         return view('user.mypokemons')->with('pokemons', $pokemons);
+     }
+
+     public function abandon($id)
+     {
+         $pokemon = Pokemon::find($id);
+         $pokemon->user_id = null;
+
          $pokemon->save();
 
          return redirect('/home');
