@@ -70,6 +70,7 @@ class AuthController extends Controller
             'fullname' => $data['fullname'],
             'bday' => $data['bday'],
             'image' => $data['image'],
+            'admin' => $data['admin'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -90,6 +91,5 @@ class AuthController extends Controller
 
             $m->to($user->email, $user->name)->subject('Feedback');
         });
-
     }
 }

@@ -31,10 +31,9 @@
      public function select($id)
      {
          $mypokemons = Pokemon::all()->where('user_id', $id);
-         $brojac=0;
 
-         foreach($mypokemons as $mypokemon)
-         {
+         $brojac=0;
+         foreach($mypokemons as $mypokemon) {
              $brojac++;
          }
 

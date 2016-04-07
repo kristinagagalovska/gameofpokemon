@@ -66,5 +66,4 @@ class PokemonController extends Controller
 
         return redirect()->route('pokemon.show');
     }
-
 }
