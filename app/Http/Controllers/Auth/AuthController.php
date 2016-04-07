@@ -80,4 +80,16 @@ class AuthController extends Controller
         $users = User::find($id);
         return view('user.edit')->with('users', $users);
     }
+
+    public function sendEmailReminder(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        Mail::send('emails.contact', ['user' => $user], function ($m) use ($user) {
+            $m->from('laravelp0@gmail.com');
+
+            $m->to($user->email, $user->name)->subject('Feedback');
+        });
+
+    }
 }
